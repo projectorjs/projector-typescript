@@ -1,0 +1,27 @@
+{
+  "name": "projector-typescript",
+  "version": "0.0.0",
+  "description": "Projector wrapper for TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "lint:flow": "flow",
+    "lint:staged": "lint-staged"
+  },
+  "author": "Stanislav Sysoev <@d4rkr00t>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^2.4.2"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.53.1",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.3",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.5.3"
+  },
+  "pre-commit": ["lint:flow", "test", "lint:staged"],
+  "lint-staged": {
+    "*.js": ["prettier --write --print-width 120", "git add"]
+  }
+}
