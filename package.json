@@ -4,13 +4,17 @@
   "description": "Projector wrapper for TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "jest",
     "lint:flow": "flow",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "build": "node ./example/build.js"
   },
   "author": "Stanislav Sysoev <@d4rkr00t>",
   "license": "MIT",
   "dependencies": {
+    "dargs": "^5.1.0",
+    "npm-which": "^3.0.1",
+    "projector-spawn": "^1.0.1",
     "typescript": "^2.4.2"
   },
   "devDependencies": {

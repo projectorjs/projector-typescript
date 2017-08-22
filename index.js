@@ -309,10 +309,57 @@
     diagnostics?: Diagnostic[];
     sourceMapText?: string;
   };
+
+  export type CompileOptions = {
+    file?: string,
+    compilerOptions?: CompilerOptions,
+    cwd?: string
+  };
 */
 
+const fs = require("fs");
+const path = require("path");
 const ts = require("typescript");
+const spawn = require("projector-spawn");
+const dargs = require("dargs");
 
-exports.transpile = function transpile(opts /*: TranspileOptions */) /*: Promise<TranspileOutput> */ {
+function isFileExist(filePath /*: string*/) /*: Promise<mixed> */ {
+  return new Promise((resolve, reject) => {
+    fs.stat(filePath, err => {
+      if (err) return reject();
+      resolve();
+    });
+  });
+}
+
+function getTypeScriptCompilerPath() /*: Promise<string> */ {
+  const tscBin = "tsc";
+  return spawn("npm", ["bin"])
+    .then(spawnOutput => {
+      const binPath = spawnOutput.stdout.trim();
+      const tscBinPath = path.join(binPath, tscBin);
+      return isFileExist(tscBin).then(() => tscBinPath).catch(() => tscBin);
+    })
+    .catch(e => {
+      return tscBin;
+    });
+}
+
+exports.transpile = function transpile(opts /*: TranspileOptions */ = { code: "" }) /*: Promise<TranspileOutput> */ {
   return Promise.resolve(ts.transpileModule(opts.code, opts));
+};
+
+exports.compile = function compile(opts /*: CompileOptions */ = {}) {
+  let args = [];
+  let cwd = opts.cwd || process.cwd();
+
+  if (opts.file) {
+    args = [opts.file].concat(args);
+  }
+
+  if (opts.compilerOptions) {
+    args = args.concat(dargs(opts.compilerOptions, { useEquals: false }));
+  }
+
+  return getTypeScriptCompilerPath().then(tsc => spawn(tsc, args, { cwd: cwd }));
 };

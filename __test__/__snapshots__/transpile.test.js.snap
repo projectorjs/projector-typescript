@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#transpile should compile simple case 1`] = `
+Object {
+  "diagnostics": Array [],
+  "outputText": "\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+var foo_1 = require(\\"foo\\");
+exports.x = foo_1.f();
+",
+  "sourceMapText": undefined,
+}
+`;
+
+exports[`#transpile should compile using all transpile options 1`] = `
+Object {
+  "diagnostics": Array [],
+  "outputText": "\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+var foo_1 = require(\\"foo\\");
+exports.x = foo_1.f();
+",
+  "sourceMapText": undefined,
+}
+`;
+
+exports[`#transpile should respect compilerOptions 1`] = `
+Object {
+  "diagnostics": Array [],
+  "outputText": "import { f } from \\"foo\\";
+export const x = f();
+",
+  "sourceMapText": undefined,
+}
+`;
