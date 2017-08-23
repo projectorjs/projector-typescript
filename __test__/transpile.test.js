@@ -10,7 +10,7 @@ export const x = f();`;
     return ts.transpile({ code }).then(result => expect(result).toMatchSnapshot());
   });
 
-  test("should respect compilerOptions", () => {
+  test("should respect compilerOptions.target", () => {
     return ts
       .transpile({ code, compilerOptions: { target: "ES2015" } })
       .then(result => expect(result).toMatchSnapshot());

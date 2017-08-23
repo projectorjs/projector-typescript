@@ -24,7 +24,7 @@ exports.x = foo_1.f();
 }
 `;
 
-exports[`#transpile should respect compilerOptions 1`] = `
+exports[`#transpile should respect compilerOptions.target 1`] = `
 Object {
   "diagnostics": Array [],
   "outputText": "import { f } from \\"foo\\";

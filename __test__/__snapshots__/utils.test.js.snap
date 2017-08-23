@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#createProgramConfig should load tsconfig and merge with provided compilerOptions and files 1`] = `
+Object {
+  "compilerOptions": Object {
+    "configFilePath": undefined,
+    "declaration": true,
+    "module": 5,
+    "outDir": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/dist",
+    "project": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig",
+    "rootDir": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/src",
+    "sourceMap": true,
+    "strict": true,
+    "target": 2,
+  },
+  "files": Array [
+    "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/src/another.ts",
+  ],
+}
+`;
+
+exports[`#createProgramConfig should not blow up if tsconfig doesn't exist 1`] = `
+Object {
+  "compilerOptions": Object {
+    "configFilePath": undefined,
+    "declaration": true,
+    "sourceMap": true,
+  },
+  "files": Array [
+    "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/without-tsconfig/src/another.ts",
+  ],
+}
+`;
+
+exports[`#createProgramConfig should override compilerOptions from tsconfig with ones that were passed 1`] = `
+Object {
+  "compilerOptions": Object {
+    "configFilePath": undefined,
+    "module": 5,
+    "outDir": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/dist",
+    "rootDir": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/src",
+    "strict": true,
+    "target": 1,
+  },
+  "files": Array [
+    "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/src/index.ts",
+    "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/src/utils.ts",
+  ],
+}
+`;
