@@ -1,5 +1,5 @@
 {
-  "name": "example-with-no-errors",
+  "name": "example-with-errors",
   "version": "0.0.0",
   "description": "",
   "main": "build.js",

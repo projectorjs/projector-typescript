@@ -22,6 +22,13 @@ exports.transpile = function transpile(opts /*: TranspileOptions */) /*: Promise
 exports.compile = function compile(opts /*: CompileOptions */) {
   return createProgramConfig(opts)
     .then(tsConfig => ts.createProgram(tsConfig.files, tsConfig.compilerOptions))
+    .catch(error => {
+      if (!(error instanceof Error)) {
+        printDiagnostics({ error: [error] });
+      }
+
+      return Promise.reject(error);
+    })
     .then(program => {
       const emitResult = program.emit();
       const diagnostics = splitDiagnosticsByType(ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics));
@@ -30,15 +37,8 @@ exports.compile = function compile(opts /*: CompileOptions */) {
 
       // Fail if we have any errors in diagnostics report.
       if (diagnostics.error && diagnostics.error.length) {
-        return Promise.reject(diagnostics.error);
+        return Promise.reject(diagnostics);
       }
-    })
-    .catch(error => {
-      if (!(error instanceof Error)) {
-        printDiagnostics({ error: [error] });
-      }
-
-      return Promise.reject(error);
     });
 };
 
@@ -53,7 +53,7 @@ exports.compile = function compile(opts /*: CompileOptions */) {
  * [x]: Fix types
  * [x]: Some tests
  * [x]: Support include / exclude
- * [ ]: Add error example
+ * [x]: Add error example
  * [ ]: Test compiler error
  * [ ]: Test extends
  * [ ]: README
