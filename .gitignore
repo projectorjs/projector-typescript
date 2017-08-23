@@ -2,3 +2,4 @@
 node_modules
 example/no-errors/dist/
 example/with-errors/dist/
+coverage

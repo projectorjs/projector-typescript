@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "lint:flow": "flow",
     "lint:staged": "lint-staged",
     "build:example": "node ./example/build.js"
@@ -26,15 +27,11 @@
     "prettier": "^1.5.3",
     "typescript": "^2.4.2"
   },
-  "pre-commit": [
-    "lint:flow",
-    "test",
-    "lint:staged"
-  ],
+  "pre-commit": ["lint:flow", "test:coverage", "lint:staged"],
   "lint-staged": {
-    "*.js": [
-      "prettier --write --print-width 120",
-      "git add"
-    ]
+    "*.js": ["prettier --write --print-width 120", "git add"]
+  },
+  "jest": {
+    "collectCoverageFrom": ["*.js"]
   }
 }
