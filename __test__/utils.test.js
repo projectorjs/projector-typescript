@@ -13,6 +13,16 @@ describe("#createProgramConfig", () => {
     }).then(config => expect(config).toMatchSnapshot());
   });
 
+  test("should support tsconfig with extends", () => {
+    return createProgramConfig({
+      files: ["src/another.ts"],
+      compilerOptions: {
+        project: path.join(__dirname, "__mocks__", "load-config", "with-tsconfig-and-extends"),
+        sourceMap: true
+      }
+    }).then(config => expect(config).toMatchSnapshot());
+  });
+
   test("should not blow up if tsconfig doesn't exist", () => {
     const projectPath = path.join(__dirname, "__mocks__", "load-config", "without-tsconfig");
     return createProgramConfig({

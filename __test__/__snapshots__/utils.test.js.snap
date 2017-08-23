@@ -24,6 +24,7 @@ Object {
   "compilerOptions": Object {
     "configFilePath": undefined,
     "declaration": true,
+    "module": 5,
     "sourceMap": true,
   },
   "files": Array [
@@ -45,6 +46,24 @@ Object {
   "files": Array [
     "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/src/index.ts",
     "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig/src/utils.ts",
+  ],
+}
+`;
+
+exports[`#createProgramConfig should support tsconfig with extends 1`] = `
+Object {
+  "compilerOptions": Object {
+    "configFilePath": undefined,
+    "module": 5,
+    "outDir": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig-and-extends/dist",
+    "project": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig-and-extends",
+    "rootDir": "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig-and-extends/src",
+    "sourceMap": true,
+    "strict": true,
+    "target": 2,
+  },
+  "files": Array [
+    "/Users/ssysoev/Development/projector-typescript/__test__/__mocks__/load-config/with-tsconfig-and-extends/src/another.ts",
   ],
 }
 `;

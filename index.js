@@ -41,20 +41,3 @@ exports.compile = function compile(opts /*: CompileOptions */) {
       }
     });
 };
-
-/**
- * TODO:
- * [x]: Load config
- * [x]: Compile project
- * [x]: Generate d.ts files
- * [x]: Generate source maps
- * [x]: Output errors
- * [x]: Test weird cases
- * [x]: Fix types
- * [x]: Some tests
- * [x]: Support include / exclude
- * [x]: Add error example
- * [ ]: Test compiler error
- * [ ]: Test extends
- * [ ]: README
- */
