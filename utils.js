@@ -15,7 +15,7 @@ function createProgramConfig(
     const configPath = ts.findConfigFile(projectDir, ts.sys.fileExists);
     const tsconfig = configPath ? ts.readConfigFile(configPath, ts.sys.readFile) : { config: {} };
 
-    if (tsconfig.error) return reject(tsconfig.error);
+    if (tsconfig.error) return reject([tsconfig.error]);
 
     const mergedConfig = merge(tsconfig.config, opts);
     const jsonConfig = ts.parseJsonConfigFileContent(mergedConfig, createParseConfigHost(projectDir), projectDir);

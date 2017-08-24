@@ -24,7 +24,7 @@ exports.compile = function compile(opts /*: CompileOptions */) {
     .then(tsConfig => ts.createProgram(tsConfig.files, tsConfig.compilerOptions))
     .catch(error => {
       if (!(error instanceof Error)) {
-        printDiagnostics({ error: [error] });
+        printDiagnostics({ error: error });
       }
 
       return Promise.reject(error);
