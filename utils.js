@@ -20,6 +20,10 @@ function createProgramConfig(
     const mergedConfig = merge(tsconfig.config, opts);
     const jsonConfig = ts.parseJsonConfigFileContent(mergedConfig, createParseConfigHost(projectDir), projectDir);
 
+    if (jsonConfig.errors && jsonConfig.errors.length) {
+      return reject(jsonConfig.errors);
+    }
+
     resolve({
       files: jsonConfig.fileNames,
       compilerOptions: jsonConfig.options
