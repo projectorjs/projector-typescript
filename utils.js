@@ -1,4 +1,9 @@
 // @flow
+
+/*::
+ import type { CompileOptions, CompilerOptions, Diagnostic, DiagnosticByGroup } from './types';
+ */
+
 "use strict";
 
 const fs = require("fs");

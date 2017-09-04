@@ -5,6 +5,10 @@
  *  https://www.typescriptlang.org/docs/handbook/compiler-options.html
  */
 
+/*::
+ import type { TranspileOptions, TranspileOutput, CompileOptions } from './types';
+ */
+
 "use strict";
 
 const fs = require("fs");
