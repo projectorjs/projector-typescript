@@ -1,0 +1,20 @@
+language: node_js
+cache:
+  yarn: true
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - "4"
+  - "6"
+  - "7"
+  - "8"
+before_script:
+  - npm install -g yarn
+  - npm prune
+install:
+  - yarn
+script:
+  - yarn lint:flow
+  - yarn test:coverage
