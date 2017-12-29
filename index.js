@@ -20,7 +20,7 @@ const splitDiagnosticsByType = require("./utils").splitDiagnosticsByType;
 
 exports.transpile = function transpile(opts /*: TranspileOptions */) /*: Promise<TranspileOutput> */ {
   const code = opts.code || "";
-  return Promise.resolve(ts.transpileModule(opts.code, opts));
+  return Promise.resolve(ts.transpileModule(code, opts));
 };
 
 exports.compile = function compile(opts /*: CompileOptions */) {
